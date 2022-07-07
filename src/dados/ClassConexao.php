@@ -1,9 +1,9 @@
 <?php
-  $servidor = "localhost";
-  $usuario = "root";
-  $port = "33002";
-  $senha = "1622001a";
-  $dbname = "db";
+$servidor = "localhost";
+$usuario = "root";
+$port = "3302";
+$senha = "";
+$dbname = "projeto";
 
   $conn = new PDO("mysql:host=$servidor;port=$port;dbname=" . $dbname, $usuario, $senha);
 ?>
