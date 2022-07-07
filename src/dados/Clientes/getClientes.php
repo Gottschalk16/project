@@ -2,15 +2,15 @@
 
 include_once 'ClassConexao.php';
 
-$query_formapgto = "SELECT id, idusuariocad, ativo, nome, endereco, complemento, bairro, telefone, email,
+$query_clientes = "SELECT id, idusuariocad, ativo, nome, endereco, complemento, bairro, telefone, email,
                     cep, cpf, cidade, uf
                     FROM clientes ORDER BY id ASC";
-$result_formapgto = $conn->prepare($query_formapgto);
-$result_formapgto-> execute();
+$result_clientes = $conn->prepare($query_clientes);
+$result_clientes-> execute();
 
-if(($result_formapgto) AND ($result_formapgto->rowCount() != 0)){
-  while($row_formapgto = $result_formapgto->fetch(PDO::FETCH_ASSOC)){
-    var_dump($row_formapgto);
+if(($result_clientes) AND ($result_clientes->rowCount() != 0)){
+  while($row_clientes = $result_clientes->fetch(PDO::FETCH_ASSOC)){
+    var_dump($row_clientes);
   }
 }
 ?>
