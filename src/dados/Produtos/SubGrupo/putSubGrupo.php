@@ -7,20 +7,20 @@ include_once 'ClassConexao.php';
 
 $response_json = file_get_contents("php://input");
 $dados = json_decode($response_json, true);
-  $query_usuario = "UPDATE subgrupoproduto SET 
+  $query_subgrupoproduto = "UPDATE subgrupoproduto SET 
                       ativo=:ativo,
                       descricao=:descricao
                       WHERE id=:id";
 
-  $edit_usuario = $conn->prepare($query_usuario);
+  $edit_subgrupoproduto = $conn->prepare($query_usuario);
 
-  $edit_usuario->bindParam(':ativo', $dados['ativo'], PDO::PARAM_INT);
-  $edit_usuario->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
-  $edit_usuario->bindParam('id', $dados['id'], PDO::PARAM_INT);
+  $edit_subgrupoproduto->bindParam(':ativo', $dados['ativo'], PDO::PARAM_INT);
+  $edit_subgrupoproduto->bindParam(':descricao', $dados['descricao'], PDO::PARAM_STR);
+  $edit_subgrupoproduto->bindParam('id', $dados['id'], PDO::PARAM_INT);
 
-  $edit_usuario->execute();
+  $edit_subgrupoproduto->execute();
 
-  if($edit_usuario->rowCount()){
+  if($edit_subgrupoproduto->rowCount()){
     $response = [
       "erro" => false,
       "mensagem" => "alterou!"
