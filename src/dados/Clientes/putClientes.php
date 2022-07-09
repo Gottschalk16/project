@@ -7,7 +7,7 @@ include_once 'ClassConexao.php';
 
 $response_json = file_get_contents("php://input");
 $dados = json_decode($response_json, true);
-  $query_usuario = "UPDATE clientes SET 
+  $query_cliente = "UPDATE clientes SET 
                       ativo=:ativo,
                       nome=:nome,
                       endereco=:endereco,
@@ -21,24 +21,24 @@ $dados = json_decode($response_json, true);
                       uf=:uf
                       WHERE id=:id";
 
-  $edit_usuario = $conn->prepare($query_usuario);
+  $edit_cliente = $conn->prepare($query_cliente);
 
-  $edit_usuario->bindParam(':ativo', $dados['ativo'], PDO::PARAM_INT);
-  $edit_usuario->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':endereco', $dados['endereco'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':complemento', $dados['complemento'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':bairro', $dados['bairro'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':telefone', $dados['telefone'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':email', $dados['email'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':cep', $dados['cep'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':cpf', $dados['cpf'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':cidade', $dados['cidade'], PDO::PARAM_STR);
-  $edit_usuario->bindParam(':uf', $dados['uf'], PDO::PARAM_STR);
-  $edit_usuario->bindParam('id', $dados['id'], PDO::PARAM_INT);
+  $edit_cliente->bindParam(':ativo', $dados['ativo'], PDO::PARAM_INT);
+  $edit_cliente->bindParam(':nome', $dados['nome'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':endereco', $dados['endereco'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':complemento', $dados['complemento'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':bairro', $dados['bairro'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':telefone', $dados['telefone'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':email', $dados['email'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':cep', $dados['cep'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':cpf', $dados['cpf'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':cidade', $dados['cidade'], PDO::PARAM_STR);
+  $edit_cliente->bindParam(':uf', $dados['uf'], PDO::PARAM_STR);
+  $edit_cliente->bindParam('id', $dados['id'], PDO::PARAM_INT);
 
-  $edit_usuario->execute();
+  $edit_cliente->execute();
 
-  if($edit_usuario->rowCount()){
+  if($edit_cliente->rowCount()){
     $response = [
       "erro" => false,
       "mensagem" => "alterou!"
